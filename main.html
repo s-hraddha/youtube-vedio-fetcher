@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Video Fetcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1 id="primary">YouTube Video Fetcher</h1>
+
+  <div id="container">
+    <label for="video-id-input">Enter YouTube Video ID:</label>
+    <input type="text" id="video-id-input" placeholder="Enter video ID" aria-label="Enter YouTube Video ID">
+    <button id="fetch-button" onclick="fetchVideo()">Fetch Video</button>
+    <button id="clear-button" onclick="clearInput()">Clear</button>
+  </div>
+
+  <div id="video-container">
+    <iframe id="video-player" frameborder="0" allowfullscreen aria-label="YouTube Video Player"></iframe>
+  </div>
+
+  <script>
+    function fetchVideo() {
+      var videoId = document.getElementById('video-id-input').value;
+      var videoPlayer = document.getElementById('video-player');
+      if (videoId.trim() !== '') {
+        var videoURL = 'https://www.youtube.com/embed/' + videoId;
+        videoPlayer.src = videoURL;
+      } else {
+        alert('Please enter a valid YouTube Video ID.');
+      }
+    }
+
+    function clearInput() {
+      document.getElementById('video-id-input').value = '';
+      document.getElementById('video-player').src = '';
+    }
+  </script>
+</body>
+</html>
